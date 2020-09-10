@@ -30,6 +30,7 @@ input{
     background: rgb(187, 187, 187);
     border: 2px solid black;
     border-radius: 15px;
+    resize: none;
 }
 #input_massage{
     color: black;
@@ -41,23 +42,33 @@ input{
 #y,#F,#x {
     margin-top: 10px;
     text-align:left;
+    background-color: rgba(201, 201, 201, 0.719);
 }
 #y5,#F5,#x5 {
     margin-top: 10px;
     text-align:left;
+    background-color: rgba(201, 201, 201, 0.719);
 }
 .but{
     border-radius: 15px;
     margin-top: 12px ;
+    /* background-color: red; */
+}
+.but:active{
+    box-shadow:inset 0 0 15px gray ;
 }
 #formula3{
     width: 400px;
 }
-
+#hustuna, #ploshcha, #naselenya, #name{
+    margin-top: 10px;
+    text-align:left;
+    background-color: rgba(201, 201, 201, 0.719);
+}
 
 
 
 .cbalink a:hover{
-    font-size: 20px;
+    font-size: 20px !important
     /* text-decoration: underline; */
 }

@@ -3,10 +3,51 @@
         <link rel="stylesheet" href="../style.css" type="text/css">
         <link rel="stylesheet" href="style.css" type="text/css">
         <meta charset="utf-8">
+        <script>
+            var number = 6;
+            var continent = new Array(  "Євразія", 
+                                        "Північна Америка", 
+                                        "Південна Америка", 
+                                        "Африка", 
+                                        "Австралія", 
+                                        "Антарктида");
+            // var naselenya = new Array( 5360351985, 565265000, 385000000, 1225000000, 20000000 , 2500); // Осіб 
+            var gustota = new Array (98, 22.9, 21.4, 36.4, 3, 0.00018); //осіб на квадратний кілометр
+            var ploshcha = new Array (54759000, 24709000, 17820000, 30132000, 7687000, 14000000 ); // Кілометрів квадратних
+
+            function search(name){
+                for(var i = 0; i<number; i++){
+                    if(name == continent[i]){
+                        return i;
+                    }
+                }
+                alert('Континент не знайдено!');
+            }
+            function out_space(){
+                var name = form_planet.name.value;
+                var i = search(name);
+                form_planet.hustuna.value = gustota[i];
+                form_planet.ploshcha.value = ploshcha[i];
+                form_planet.naselenya.value = " ";
+            }
+            function out_people(){
+                var name = form_planet.name.value;
+                var i = search(name);
+                form_planet.naselenya.value = gustota[i] * ploshcha[i];
+            }
+        </script>
     </head>
     <body class="body">
-
+        <br>
+        <form id="form_planet">
+            Введіть назву шуканого континента: <input type="text" id="name" value=""><br>
+            Густина населення =        <input type="text" id="hustuna" value="" readonly><br>
+            Площа континента =        <input type="text" id="ploshcha" value="" readonly><br>
+            Населення континента = <input type="text" id="naselenya" value="" readonly><br>
+            <input type="button" onclick="out_space()" class="but" value="Густина і площа материка">
+            <input type="button" onclick="out_people()" class="but" value="Населення материка">
+        </form>
         <a href="index.html">Назад </a>
         
-    </body>
+   </body>
 </html> 
