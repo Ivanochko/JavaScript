@@ -1,0 +1,36 @@
+.body{
+    background:url(phon.global.jpg);
+    background-repeat: repeat;
+    background-size: 1000px;
+    background-position: center;
+}
+.h{
+    text-decoration: underline;
+    color: white;
+}
+.list_labs{
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 25px;
+    list-style-type: none;
+}
+.list_labs li:before{
+    content: "►  ";
+}
+.list_labs li{
+    height: 30px;
+}
+li a {
+    text-decoration: none;
+    color: white;
+    transition: font-size 0.5s;
+}
+li a:hover{
+    /* -webkit-text-stroke: 0.6x black; */
+    font-size: 25px;
+}
+/* a:active{
+    color: gray;
+    -webkit-text-stroke: 0.6x black;
+} */

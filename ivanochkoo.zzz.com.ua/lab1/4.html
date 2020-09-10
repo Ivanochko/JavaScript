@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <meta charset="utf-8">
+        <script>
+            function rozrahuvatu(){
+                var x_ = parseInt(formaa.x.value);
+                var y_ = parseInt(formaa.y.value);
+                var F_;
+                if(x_ < 3*y_) F_=2*x_+3*y_; else
+                if(Math.pow(y_,2)>2*x_*y_ || y_>0) F_=x_*y_+x_/(3*y_); else
+                F_= Math.pow(x_,2)+y_; 
+                // alert(x);
+                formaa.F.value = F_;
+            }
+        </script>
+    </head>
+    <body class="body">
+        <br>
+        <form id="formaa">
+            Розрахунок за формулою:
+            <p><img src="formula2.png" id="formula2"></p>
+            x = <input type="text" id="x" value="2"><br>
+            y = <input type="text" id="y" value="3"><br>
+            F = <input type="text" id="F" value=""><br>
+            <input type="button" onclick="rozrahuvatu()" class="but" value="Розрахувати">
+        </form>
+        <a href="index.html">Назад </a>
+    </body>
+</html> 

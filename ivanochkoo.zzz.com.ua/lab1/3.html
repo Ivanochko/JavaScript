@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <meta charset="utf-8">
+        <script>
+            function massage(umova){
+                forma.input_massage.value=umova;
+            }
+        </script>
+    </head>
+    <body class="body">
+        <form id="forma"><br>
+                <textarea class="onsel" cols="20" rows="5" onblur="massage('Щось ще не сталось')" onselect="massage('Текст виділено');" onfocus="massage('Сфокусовано)');">
+                Сфокусуйтесь тут або виділіть текст, щоб щось сталось)
+                </textarea> 
+                &nbsp; <br><br>
+                <input type="text" size="50" id="input_massage" value="Щось ще не сталось">
+        </form>
+        <a href="index.html">Назад </a>
+    </body>
+</html> 

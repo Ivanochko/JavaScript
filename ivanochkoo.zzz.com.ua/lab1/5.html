@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <meta charset="utf-8">
+        <script>
+            function factorial(x){
+                var result = 1;
+                for(var j = 1; j<=x; j++){
+                    result *=j
+                }
+                return result;
+            }
+            function sum(){
+                var x = parseInt(form_sum.x5.value);
+                var y= parseInt(form_sum.y5.value);
+                var i = 7, sum = 0;
+                while(i<=9){
+                    sum += Math.pow((-1),(i+1))*(factorial(i)/x + y)/(factorial(i+1));
+                    i++;
+                }
+                form_sum.F5.value = sum;
+            }
+        </script>
+    </head>
+    <body class="body">
+        <br>
+        <form id="form_sum">
+            Розрахунок за формулою:
+            <p><img src="formula3.png" id="formula3"></p>
+            x = <input type="text" id="x5" value="2"><br>
+            y = <input type="text" id="y5" value="3"><br>
+            F = <input type="text" id="F5" value=""><br>
+            <input type="button" onclick="sum()" class="but" value="Розрахувати">
+        </form>
+        <a href="index.html">Назад </a>
+        
+    </body>
+</html> 
