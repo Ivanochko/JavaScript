@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <meta charset="utf-8">
+        <script>
+            function tabl(){
+                var row = parseInt( form_tabl.rows.value);
+                var col = parseInt (form_tabl.cols.value);
+                var val = 0;
+                teg = "<table id= \"tabl\">\n";
+                for (var i = 1; i <= row; i++) {
+                    teg+= "<tr>\n";
+                    for (var j = 1; j <= col; j++) {
+                        teg+= "<td>\n";
+                        val = i+ 11 * j;
+                        teg += "<input type =\"text\" id=\"_"+i+"_" + j+ "\" readonly value = \""+val+"\" class= \"data\"";
+                        teg += "<\/td>\n";
+                    }
+                    teg += "<\/tr>\n";
+                }
+                teg += "<\/table>";
+                div_tabl.innerHTML = teg;
+            }
+            function calc(){
+                var mass = document.getElementsByClassName('data');
+                var col = parseInt( form_tabl.cols.value);
+                var sum = 0;
+                for(var i = 0; i<=mass.length; i++){
+                    if (i%col==2 || i == 2) {
+                        sum+=parseInt(mass[i].value);
+                    }
+                }
+                alert('Сума третьої колонки згенерованого масиву: ' + sum);
+            }
+        </script>
+    </head>
+    <body class="body">
+        <br><br>
+        <form id="form_tabl">
+            Введіть кількість рядків:     <input class="in" type="text" id="rows" value="3" onchange="tabl()"> <br>
+            Введіть кількість стовпців: <input class="in" type="text" id="cols" value="3" onchange="tabl()"><br>
+            <input type="button" class="but3" value="Побудувати таблицю" onclick="tabl()">
+            <input type="button" class="but3" value="Розрахувати" onclick="calc()">
+            <div id="div_tabl"></div>
+        </form>
+        <a  href="index.html">Повернутись назад </a>
+    </body>
+</html> 

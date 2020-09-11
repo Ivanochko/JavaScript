@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <meta charset="utf-8">
+        <script>
+            var time;
+
+            function clock(){
+                now = new Date();
+                year = now.getYear() + 1900;
+                mon = now.getMonth() +1 ; 
+                day = now.getDate();
+                hour = now.getHours();
+                min = now.getMinutes();
+                sec = now.getSeconds();
+                time = "" + year;
+                if (mon < 10) time += ":0" + mon;
+                else time+= ":"+ mon;
+                if (day < 10) time += ":0" + day;
+                else time+= ":"+ day;
+                
+                if (hour < 10) time += ":0" + hour;
+                else time+= ":"+ hour;
+
+                if (min < 10) time += ":0" + min;
+                else time+= ":"+ min;
+
+                if (sec < 10) time += ":0" + sec;
+                else time+= ":"+ sec;
+                                
+                time_form.time.value = time;
+                Timer= setTimeout("clock()",1000);
+            }
+
+        </script>
+    </head>
+    <body class="body" onload="clock()">
+        <br>
+        <p></p>
+        <form id="time_form">
+            <input readonly type="text" id="time" value="" >
+            <!-- <input type="text" id="time" value=""> -->
+            <!-- <p><img src="clock.png" id="cloc"></p> -->
+        </form>
+
+        <a  href="index.html">Повернутись назад </a>
+    </body>
+</html> 

@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <meta charset="utf-8">
+        <script>
+            function out(){
+                var radok;
+                var x = calculator.t1.value;   
+                var y = calculator.t2.value;
+                
+                var symb = new Array('+', '-', '*', '/', '%');
+
+                var x1 = document.getElementsByClassName('out1');
+                var y1 = document.getElementsByClassName('out2');
+                var result = document.getElementsByClassName('res');
+                for(var i = 0; i<5; i++)  x1[i].value = x;
+                for(var i = 0; i<5; i++)   y1[i].value = y;
+                
+                for(var i = 0; i<5; i++){
+                    radok = x + symb[i] + y;
+                    result[i].value = eval(radok);
+                }
+            }
+        </script>
+    </head>
+    <body class="body">
+        <form id="calculator">
+            <br><br><br><br>
+                <p class="hh">Введіть 2 числа</p>
+            <!-- <fieldset id="numbers"> -->   
+                <input type="text" class="in1 text"  id="t1" value=""> 
+                <input type="text" class="in2 text"  id="t2" value=""> <br>
+                <input type="text" class="out1 text" id="t3" value=""> <span class="symb">+</span>
+                <input type="text" class="out2 text" id="t4" value=""> <span class="symb">=</span>
+                <input type="text" id="res1" class="res text" value=""> <br>
+                <input type="text" class="out1 text" id="t5" value=""> <span class="symb">-</span>
+                <input type="text" class="out2 text" id="t6" value=""> <span class="symb">=</span>
+                <input type="text" id="res2" class="res text" value=""> <br>
+                <input type="text" class="out1 text" id="t7" value=""> <span class="symb">*</span>
+                <input type="text" class="out2 text" id="t8" value=""> <span class="symb">=</span>
+                <input type="text" id="res3" class="res text" value=""> <br>
+                <input type="text" class="out1 text" id="t9" value=""> <span class="symb">/</span>
+                <input type="text" class="out2 text" id="t10" value=""> <span class="symb">=</span>
+                <input type="text" id="res4" class="res text" value=""> <br>
+                <input type="text" class="out1 text" id="t9" value=""><span class="symb">%</span>
+                <input type="text" class="out2 text" id="t10" value=""> <span class="symb">=</span>
+                <input type="text" id="res5" class="res text" value=""> <br><br>
+                <input type="button" value="Розрахувати" id="rozr" onclick="out()">
+                <!-- </fieldset> -->
+            </form>
+            <a id="back" href="index.html">Повернутись назад </a>
+    </body>
+</html> 
