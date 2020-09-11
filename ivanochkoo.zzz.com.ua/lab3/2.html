@@ -1,0 +1,224 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Завдання №2</title>
+        <script>
+            var str = "";
+            var keys_now = keys_ua = ['1','2','3','4','5','6','7','8','9','0','-','(',')',
+                        'й','ц','у','к','е','н','г','ш','щ','з','х','ї','\'',
+                        'ф','і','в','а','п','р','о','л','д','ж','є','!','?',
+                        'я','ч','с','м','и','т',' ','ь','б','ю',',','.'];
+
+            var keys_eng = ['1','2','3','4','5','6','7','8','9','0','-','(',')',
+                            'q','w','e','r','t','y','u','i','o','p','[',']','\'',
+                            'a','s','d','f','g','h','j','k','l',':',';','/','?',
+                            'z','x','c','v','b','n',' ','m',',','.','<','>'];
+
+            function click1(clicked){
+                str+= keys_now[clicked-1];
+                // alert (str);
+                var screen1 = document.getElementById('scr');
+                screen1.value = str;
+            }
+            function cle(){
+                str=" ";
+                var screen1 = document.getElementById('scr');
+                screen1.value = str;
+            }
+            function cop(){
+                var copytext = document.getElementById('scr');
+                copytext.select();
+                document.execCommand("Copy");
+                alert("Текст скопійовано: " + copytext.value) 
+            }
+            function print_keys(){
+                var keys = document.getElementsByClassName('key_but');
+                if(keys[13].value == 'q')
+                    keys_now = keys_ua;
+                else 
+                    keys_now = keys_eng;
+                for (var index = 0; index < keys.length; index++)
+                    keys[index].value = keys_now[index];
+            }
+        </script>
+    </head>
+    <body class="body">
+        <div id="zavdan2">
+            <input type="button" id="copY" value="alt+shift" onclick="print_keys()" class="key_but1">
+            <input type="text" id="scr" class="screen" value="" readonly onclick="cop()" title="Торкніться, щоб скопіювати">
+            <input type="button" id="cleaR" value="clear" onclick="cle()" class="key_but1">
+            <table id="keyboard">
+                <tr>
+                    <td class="key">
+                        <input type="button" value="1" class="key_but" id="k1" onclick="click1(1);">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="2" class="key_but" id="k2" onclick="click1(2)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="3" class="key_but" id="k3" onclick="click1(3)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="4" class="key_but" id="k4" onclick="click1(4)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="5" class="key_but" id="k5" onclick="click1(5)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="6" class="key_but" id="k6" onclick="click1(6)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="7" class="key_but" id="k7" onclick="click1(7)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="8" class="key_but" id="k8" onclick="click1(8)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="9" class="key_but" id="k9" onclick="click1(9)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="0" class="key_but" id="k10" onclick="click1(10)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="-" class="key_but" id="k11" onclick="click1(11)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="(" class="key_but" id="k12" onclick="click1(12)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value=")" class="key_but" id="k13" onclick="click1(13)">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="key">
+                        <input type="button" value="й" class="key_but" id="k14" onclick="click1(14);">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="ц" class="key_but" id="k15" onclick="click1(15)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="у" class="key_but" id="k16" onclick="click1(16)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="к" class="key_but" id="k17" onclick="click1(17)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="е" class="key_but" id="k18" onclick="click1(18)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="н" class="key_but" id="k19" onclick="click1(19)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="г" class="key_but" id="k20" onclick="click1(20)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="ш" class="key_but" id="k21" onclick="click1(21)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="щ" class="key_but" id="k22" onclick="click1(22)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="з" class="key_but" id="k23" onclick="click1(23)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="х" class="key_but" id="k24" onclick="click1(24)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="ї" class="key_but" id="k25" onclick="click1(25)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="'" class="key_but" id="k26" onclick="click1(26)">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="key">
+                        <input type="button" value="ф" class="key_but" id="k27" onclick="click1(27)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="і" class="key_but" id="k28" onclick="click1(28)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="в" class="key_but" id="k29" onclick="click1(29)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="а" class="key_but" id="k30" onclick="click1(30)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="п" class="key_but" id="k31" onclick="click1(31)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="р" class="key_but" id="k32" onclick="click1(32)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="о" class="key_but" id="k33" onclick="click1(33)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="л" class="key_but" id="k34" onclick="click1(34)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="д" class="key_but" id="k35" onclick="click1(35)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="ж" class="key_but" id="k36" onclick="click1(36)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="є" class="key_but" id="k37" onclick="click1(37)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="!" class="key_but" id="k38" onclick="click1(38)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="?" class="key_but" id="k39" onclick="click1(39)">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="key">
+                        <input type="button" value="я" class="key_but" id="k40" onclick="click1(40)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="ч" class="key_but" id="k41" onclick="click1(41)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="с" class="key_but" id="k42" onclick="click1(42)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="м" class="key_but" id="k43" onclick="click1(43)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="и" class="key_but" id="k44" onclick="click1(44)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="т" class="key_but" id="k45" onclick="click1(45)">
+                    </td>
+                    <td colspan="2" class="key">
+                        <input type="button" value="  " class="key_but" id="k46" onclick="click1(46)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="ь" class="key_but" id="k47" onclick="click1(47)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="б" class="key_but" id="k48" onclick="click1(48)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="ю" class="key_but" id="k49" onclick="click1(49)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="," class="key_but" id="k50" onclick="click1(50)">
+                    </td>
+                    <td class="key">
+                        <input type="button" value="." class="key_but" id="k51" onclick="click1(51)">
+                    </td>
+                    <!-- <td class="key">
+                        <input type="button" value="" class="key_but" id="k" onclick="click(38)">
+                    </td> -->
+                </tr>
+            </table>
+            <!-- <input type="button" value="fsaf" onclick="print_keys()"> -->
+
+        </div>
+        <a  href="index.html">Повернутись назад </a>
+        
+    </body>
+</html> 

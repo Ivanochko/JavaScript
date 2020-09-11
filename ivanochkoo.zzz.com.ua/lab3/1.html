@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="../style.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Завдання №1</title>
+        <script>
+            function kvadrat_inf(){
+                var inf = document.getElementsByClassName('in');
+                var perimeter = parseInt(inf[0].value)*2 + parseInt(inf[1].value)*2;
+                var square = parseInt(inf[0].value) * parseInt(inf[1].value);
+                var lenght_diagonal = Math.sqrt( Math.pow(parseInt(inf[0].value),2) + Math.pow(parseInt(inf[1].value),2) );
+                var if_kvadrat = "";
+                if (parseInt(inf[0].value) == parseInt(inf[1].value)) if_kvadrat = "Так"
+                else if_kvadrat = "Ні"
+                // var out_p = "" + perimeter, out_s = "" + square, out_l = "" + lenght_diagonal;
+                var out_i = new Array(" " + perimeter, " " + square, " " + lenght_diagonal, if_kvadrat);
+                var out_elems = document.getElementsByClassName('out');
+                for(var i = 0; i<out_elems.length; i++){
+                    out_elems[i].innerHTML = out_i[i];
+                }
+            }
+        </script>
+    </head>
+    <body class="body">
+        <p class="hh"> Розрахунок властивостей прямокутника </p>
+        <table id="kvadrat">
+            <tr>
+                <td  class="tab">
+                    Довжина прямокутника
+                </td>
+                <td  class="tab">
+                    <input type="text" id="lenght" class="in" value="3" onchange="kvadrat_inf()">
+                </td>
+            </tr>
+            <tr>
+                <td  class="tab">
+                    Ширина прямокутника
+                </td>
+                <td  class="tab">
+                    <input type="text" id="width" class="in" value="4" onchange="kvadrat_inf()">
+                </td>
+            </tr>
+            <tr>
+                <td  class="tab">
+                    Периметр
+                </td>
+                <td  class="tab out" id="out1">
+                </td>
+            </tr>
+            <tr>
+                <td  class="tab" class="tab">
+                    Площа
+                </td>
+                <td  class="tab out" id="out2">
+                </td>
+            </tr>
+            <tr>
+                <td  class="tab">
+                    Довжина діагоналі
+                </td>
+                <td  class="tab out" id="out3">
+                </td>
+            </tr>
+            <tr>
+                <td  class="tab">
+                    Чи є прямокутник квадратом?
+                </td>
+                <td  class="tab out" id="out4">
+                </td>
+            </tr>
+        </table><br>
+        <input class="but" type="button" onclick="kvadrat_inf()" value="Розрахувати"><br><br>
+        <a  href="index.html">Повернутись назад </a>
+        
+    </body>
+</html> 
