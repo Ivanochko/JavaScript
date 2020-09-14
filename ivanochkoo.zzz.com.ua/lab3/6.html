@@ -3,10 +3,229 @@
         <link rel="stylesheet" href="style.css" type="text/css">
         <link rel="stylesheet" href="../style.css" type="text/css">
         <meta charset="utf-8">
-		<title>Завдання №6</title>
+        <title>Завдання №6</title>
+        <script>
+            function tog(nameId){
+                var potribn = document.getElementById(nameId);
+                if(potribn.hidden == true){
+                    potribn.hidden = false;
+                }else{
+                    potribn.hidden = true;
+                }
+            }
+        </script>
     </head>
-    <body class="body">
+    <body class="body" >
         
+        <div id="main_towns">
+            <ul class="list" id="list_id"> 
+                <p class="hh"> Країни Європи за кількістю населення:</p>
+                <li class="podlist" id="podlist1" > <span onclick="tog('russia')" class="podlist curs" > Росія</span>
+                    <ul id="russia" class="country" hidden="true">
+                        <span class="podpodlist"> Міста Росії за кількістю населення:</span>
+                        <li class="podpodlist" id="russia1">
+                            <span class="podpodlist" id="moskva"> <span onclick="tog('hide1')" class="podpodlist curs" > Москва</span> 
+                                <span id="hide1" hidden="true">    <br>
+                                <span class="podlist_info">Населення: 10 509 000</span><br>
+                                <img src="towns/moskva.png" class="image podlist_info"> </span>
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="russia2">
+                            <span class="podpodlist" id="s_p"><span onclick="tog('hide2')" class="podpodlist curs"> Санкт-Петербург</span> <br>
+                                <span id="hide2" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 4 581 854</span><br>
+                                    <img src="towns/S_p.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="russia3">
+                            <span class="podpodlist" id="novosib"><span onclick="tog('hide3')" class="podpodlist curs"> Новосибірськ</span> <br>
+                                <span id="hide3" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 1 390 513</span><br>
+                                <img src="towns/novosib.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="russia4">
+                            <span class="podpodlist" id="ekat"> <span onclick="tog('hide4')" class="podpodlist curs"> Єкатеринбург</span> <br>
+                                <span id="hide4" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 1 335 000</span><br>
+                                <img src="towns/ekatirenburg.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="russia5">
+                            <span class="podpodlist" id="n_n"><span onclick="tog('hide5')" class="podpodlist curs"> Нижній Новгород</span> <br>
+                                <span id="hide5" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 1 280 355</span><br>
+                                <img src="towns/n_n.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="podlist" id="podlist2"> <span onclick="tog('germany')" class="podlist curs" > Німеччина</span>
+                    <ul id="germany" class="country" hidden="true">
+                        <span class="podpodlist"> Міста Німеччини за кількістю населення:</span>
+                        <li class="podpodlist" id="germany1">
+                            <span class="podpodlist" id="Berlin"><span onclick="tog('hide6')" class="podpodlist curs"> Берлін <br></span>                                <span id="hide6" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 3 404 037</span><br>
+                                <img src="towns/berlin.jpg" class="image podlist_info"> </span>
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="germany2">
+                            <span class="podpodlist" id="gamburg"><span onclick="tog('hide7')" class="podpodlist curs"> Гамбург <br></span>
+                                <span id="hide7" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 1 754 182</span><br>
+                                <img src="towns/gamburg.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="germany3">
+                            <span class="podpodlist" id="munchen"> <span onclick="tog('hide8')" class="podpodlist curs"> Мюнхен <br></span>                                <span id="hide8" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 1 294 608</span><br>
+                                <img src="towns/munchen.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="germany4">
+                            <span class="podpodlist" id="keln"><span onclick="tog('hide9')" class="podpodlist curs"> Кельн <br></span>                               <span id="hide9" hidden="true">    <br>
+                                    <span class="podlist_info">Населення: 989 766</span><br>
+                                <img src="towns/keln.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="podlist" id="podlist3"> <span onclick="tog('france')" class="podlist curs" > Франція</span>
+                    <ul id="france" class="country" hidden="true">
+                        <span class="podpodlist"> Міста Франції за кількістю населення:</span>
+                        <li class="podpodlist" id="france1">
+                            <span class="podpodlist" id="paris"><span onclick="tog('hide10')" class="podpodlist curs"> Париж <br></span>                               <span id="hide10" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 2 243 833</span><br>
+                                <img src="towns/paris.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="france2">
+                            <span class="podpodlist" id="marcel"><span onclick="tog('hide11')" class="podpodlist curs"> Марсель <br></span>
+                                <span id="hide11" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 850 726</span><br>
+                                <img src="towns/marcel.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="france3">
+                            <span class="podpodlist" id="lion"><span onclick="tog('hide12')" class="podpodlist curs"> Ліон  <br></span>                               <span id="hide12" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 484 344</span><br>
+                                <img src="towns/lion.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="france4">
+                            <span class="podpodlist" id="tulyza"><span onclick="tog('hide13')" class="podpodlist curs"> Тулуза  <br></span>
+                                <span id="hide13" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 441 802</span><br>
+                                <img src="towns/tulyza.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="france5">
+                            <span class="podpodlist"id="nicca"><span onclick="tog('hide14')" class="podpodlist curs"> Ніцца  <br></span>                                <span id="hide14" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 343 304</span><br>
+                                <img src="towns/nicca.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="podlist" id="podlist4"> <span onclick="tog('britany')" class="podlist curs" > Велика Британія</span>
+                    <ul id="britany" class="country" hidden="true">
+                        <span class="podpodlist"> Міста Великої Британії за кількістю населення:</span>
+                        <li class="podpodlist" id="britany1">
+                            <span class="podpodlist"id="london"><span onclick="tog('hide15')" class="podpodlist curs"> Лондон <br></span>                                <span id="hide15" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 7 556 900</span><br>
+                                <img src="towns/london.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="britany2">
+                            <span class="podpodlist" id="birmin"><span onclick="tog('hide16')" class="podpodlist curs"> Бірмінгем <b</span>
+                                <span id="hide16" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 1 010 000</span><br>
+                                <img src="towns/birmin.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="britany3">
+                            <span class="podpodlist"id="lids"><span onclick="tog('hide17')" class="podpodlist curs"> Лідс <br></span>                              <span id="hide17" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 767 100</span><br>
+                                <img src="towns/lids.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="britany4">
+                            <span class="podpodlist"id="Sheffield"><span onclick="tog('hide18')" class="podpodlist curs"> Шеффілд <br></span>
+                                <span id="hide18" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 530 300</span><br>
+                                <img src="towns/Sheffield.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="britany5">
+                            <span class="podpodlist" id="Bradford"><span onclick="tog('hide19')" class="podpodlist curs"> Бредфорд <br</span>
+                                <span id="hide19" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 497 400</span><br>
+                                <img src="towns/Bradford.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="podlist" id="podlist5"> <span onclick="tog('italy')" class="podlist curs" > Італія</span>
+                    <ul id="italy" class="country" hidden="true">
+                        <span class="podpodlist"> Міста Італії за кількістю населення:</span>
+                        <li class="podpodlist" id="italy1">
+                            <span class="podpodlist" id="rome"><span onclick="tog('hide20')" class="podpodlist curs"> Рим <br></span>                             <span id="hide20" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 2 870 493</span><br>
+                                <img src="towns/rome.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="italy2">
+                            <span class="podpodlist" id="Milan"><span onclick="tog('hide21')" class="podpodlist curs"> Мілан <br></span>                               <span id="hide21" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 1 331 586</span><br>
+                                <img src="towns/Milan.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="italy3">
+                            <span class="podpodlist" id="neapol"><span onclick="tog('hide22')" class="podpodlist curs"> Неаполь <br></span>
+                                <span id="hide22" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 989 598</span><br>
+                                <img src="towns/neapol.jpg" class="image podlist_info"> </span>
+
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="italy4">
+                            <span class="podpodlist" id="Turin"><span onclick="tog('hide23')" class="podpodlist curs"> Турин <br></span>                               <span id="hide23" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 899 291</span><br>
+
+                                <img src="towns/Turin.jpg" class="image podlist_info"> </span>
+                            </span>
+                        </li>
+                        <li class="podpodlist" id="italy5">
+                            <span class="podpodlist" id="Palermo"><span onclick="tog('hide24')" class="podpodlist curs"> Палермо <br></span>
+                                <span id="hide24" hidden="true">    <br>
+                                    <span class="podlist_info"> Населення: 676 527</span><br>
+                                <img src="towns/Palermo.jpg" class="image podlist_info"></span>
+
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
         <a  href="index.html">Повернутись назад </a>
         
     </body>
