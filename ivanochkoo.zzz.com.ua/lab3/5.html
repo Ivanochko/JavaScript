@@ -15,7 +15,7 @@
                 x = Math.floor(Math.random() * 9)+1;
                 y = Math.floor(Math.random() * 9)+1;
                 
-                str += x + " × " + y + " = ";
+                str = x + " × " + y + " = ";
                 question.innerHTML = str;  
                 
                 time = 11;
@@ -26,14 +26,11 @@
                 $("#main_test").removeClass("hidden");
             }
             function next_(){
-                // end();
-                if (now == 9){
-                    but_next.value = "Завершити тест!";
-                }
-                if(now >9){
-                    end();
-                }
-                time = 0;
+                clearTimeout(Timer);
+                if (now == 9)    but_next.value = "Завершити тест!";
+                
+                if(now >9)    end();
+                
                 reply.readOnly = false;
                 reply.value = "";
                 $('#timer').addClass('inp');
@@ -52,13 +49,33 @@
                 timer_print();
 
                 sms.innerHTML = "";
-
                 now++;
             }
-            function request(time_out = ""){
+            function request(){
                 right = x*y;
                 repl = reply.value;
                 $('#reply').removeClass('inp');
+                if (right == repl){
+                    score++;
+                    $('#reply').removeClass('nope');
+                    $('#reply').addClass('yep');
+                    sms.innerHTML = "Відповідь правильна!";
+                }else {
+                    $('#reply').addClass('nope');
+                    sms.innerHTML = "Помилка! Правильна відповідь «"+ right +"»";
+                }
+                reply.readOnly = true;
+
+                clearTimeout(Timer);
+
+                score_proc = score / now *100;
+
+                score_str = "Правильних відповідей " + score + " з " + now +" питань! (" + Math.floor(score_proc) + "%)";
+                score_test.innerHTML = score_str;
+            }
+            function score_plus(){
+                right = x*y;
+                repl = reply.value;
                 if (right == repl){
                     score++;
                     $('#reply').addClass('yep');
@@ -67,23 +84,21 @@
                     $('#reply').addClass('nope');
                     sms.innerHTML = "Помилка! Правильна відповідь «"+ right +"»";
                 }
-                if (time_out == "Час вийшов!") alert (time_out);
-                reply.readOnly = true;
-                clearTimeout(Timer);
-
-                score_proc = score / now *100;
-
-                score_str = "Правильних відповідей " + score + " з " + now +" питань! (" + Math.floor(score_proc) + "%)";
-                score_test.innerHTML = score_str;
             }
             function timer_print(){
                 time--;
                 Timer = setTimeout("timer_print()", 1000);
-                if(time <= 0    ){
+                if(time <= 0){
                     clearTimeout(Timer);
                     $('#timer').addClass('nope');
                     $('#timer').removeClass('inp');
-                    request("Час вийшов!");
+                    $('#reply').addClass('nope');
+                    sms.innerHTML = "Час вийшов! Правильна відповідь «"+ x*y +"»";
+                    score_proc = score / now *100;
+                    reply.readOnly = true;
+
+                    score_str = "Правильних відповідей " + score + " з " + now +" питань! (" + Math.floor(score_proc) + "%)";
+                    score_test.innerHTML = score_str;
                 }
                 timer.value = time;
             }
@@ -95,7 +110,7 @@
                 $('#timer').removeClass('nope');
 
                 clearTimeout(Timer);
-                time = Infinity;
+                time = 150000;
                 score_final.innerHTML = "Правильних відповідей " + score + " з " + now +" питань! (" + Math.floor(score_proc) + "%)";
                 str = "", score_str = "";
                 question.innerHTML = str;  
@@ -103,7 +118,8 @@
                 reply.value= "";
                 score_test.innerHTML = "";
                 sms.innerHTML = "";
-                score = 0, score_proc = 0, now = 0;
+                score = 0, score_proc = 0, now = 1;
+                but_next.value = "Наступне завдання";
             }
             function restart_(){
                 $("#end_test").addClass("hidden");
