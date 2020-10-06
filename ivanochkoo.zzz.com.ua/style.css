@@ -3,6 +3,7 @@
     background-repeat: repeat;
     background-size: 1000px;
     background-position: center;
+    background-attachment: fixed;
 }
 #h{
     font-size: 35px;
