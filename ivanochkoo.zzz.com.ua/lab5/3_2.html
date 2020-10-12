@@ -6,11 +6,30 @@
         <title>Завдання №3</title>
         <script>
             $(Document).ready(function(){
+                $("#imag1").hide();
+                $("#imag2").hide();
                 $("#imag1").mouseover(function(){
                     alert('Гора Матерхорн');
                 });
                 $("#imag2").mouseover(function(){
                     alert('Вулкан Фудзіяма');
+                });
+                $('#show_image1').click(function(){
+                    $("#imag1").show();
+
+                    $('#show_image1').hide();
+                });             
+                $('#show_image2').click(function(){
+                    $("#imag2").show();
+                    $('#show_image2').hide();
+                });
+                $("#imag1").click(function(){
+                    $('#show_image1').show();
+                    $("#imag1").hide();
+                });
+                $("#imag2").click(function(){
+                    $('#show_image2').show();
+                    $("#imag2").hide();
                 });
             });
         </script>
@@ -21,9 +40,11 @@
             <table class="table_1sp">
                 <tr>
                     <td>
+                        <input class="but_img" type="button" value="Показати зображення" id="show_image1">
                         <img src="matterhorn.jpg" id="imag1" class="imag_n">
                     </td>   
                     <td>
+                        <input class="but_img" type="button" value="Показати зображення" id="show_image2"> 
                         <img src="fudziyama.jpg" id="imag2" class="imag_n">
                     </td>
                 </tr>

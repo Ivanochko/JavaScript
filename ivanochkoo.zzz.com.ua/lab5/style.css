@@ -93,6 +93,7 @@ a:hover{
 }
 .imag_n{
     width: 80%;
+    margin: none;
 }
 #z3_1{
     width: 80%;
@@ -102,4 +103,24 @@ a:hover{
     padding-bottom: 5px;
     border-bottom: 0.5vw solid white;
     margin-bottom: -12px;
+}
+.but_img{
+    color: black;
+    margin-top: 15px;
+    margin-bottom: -15px;
+    background-color: rgb(135, 160, 143);
+    border-radius: 25px;
+    height: 50px;
+    border: 3.5px outset rgb(97, 97, 97);
+    box-shadow: inset 0 0 2px black;
+}
+.but_img:active{
+    box-shadow: inset 0 0 10px black;
+}
+.table_1sp, .table_1sp tr td{
+    height: 80%;
+    width: 100%;
+}
+.table_1sp tr td{
+    width: 50%;
 }

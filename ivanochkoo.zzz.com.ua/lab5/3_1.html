@@ -6,6 +6,8 @@
         <title>Завдання №3</title>
         <script>
             $(Document).ready(function(){
+                $("#imag11").hide();
+                $("#imag22").hide();
                 $("#imag11").mouseover(function(){
                     $("#span11").text("Гора Матерхорн");
                     $("#imag11").addClass("framed");
@@ -22,7 +24,23 @@
                     $("#span22").text(" ");
                     $("#imag22").removeClass("framed");
                 });
+                $('#show_image11').click(function(){
+                    $("#imag11").show();
 
+                    $('#show_image11').hide();
+                });             
+                $('#show_image22').click(function(){
+                    $("#imag22").show();
+                    $('#show_image22').hide();
+                });
+                $("#imag11").click(function(){
+                    $('#show_image11').show();
+                    $("#imag11").hide();
+                });
+                $("#imag22").click(function(){
+                    $('#show_image22').show();
+                    $("#imag22").hide();
+                });
             });
         </script>
     </head> 
@@ -32,10 +50,12 @@
             <table class="table_1sp">
                 <tr>
                     <td>
+                        <input class="but_img" type="button" value="Показати зображення" id="show_image11">
                         <p id="nam11" class="hovered"> <span id="span11"> </span></p>
                         <img src="matterhorn.jpg" id="imag11" class="imag_n">
                     </td>   
                     <td>
+                        <input class="but_img" type="button" value="Показати зображення" id="show_image22">
                         <p id="nam22" class="hovered">  <span id="span22"></span></p>
                         <img src="fudziyama.jpg" id="imag22" class="imag_n">
                     </td>
