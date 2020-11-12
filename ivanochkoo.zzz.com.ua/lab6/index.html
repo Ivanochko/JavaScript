@@ -2,11 +2,222 @@
     <head>
         <link rel="stylesheet" href="style.css" type="text/css">
         <meta charset="utf-8">
-		<title>Лабораторна №6</title>
+        <title>Лабораторна №6</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script>
+            $(Document).ready(function(){
+                for (let i = 1; i < 9; i++) {           // hide elements
+                    $('#sublist' + i).hide();
+                }
+
+                $("li").click(function(){               // toggle elements
+                    $("#sub" + this.id).toggle();  
+                    $("#" + this.id).toggleClass("activeList");   
+                });
+
+                $("#button_html").click(function(){     // .html()
+                    // var htmlCode =; 
+                    $("#codeList").text( "<ul>" + $("#editList").html() + "</ul>");
+                    $("#codeList").removeClass("hidden");
+                    setTimeout(function(){
+                        $("#codeList").addClass("hidden");
+                    }, 5000);
+                });
+
+                $("#button_generate").click(function(){ // .css();
+                    $("#blockColor").css({
+                        "background-color": colorBack.value,
+                        "color": colorFont.value,
+                        "border-color": colorBorder.value
+                    });
+                    $("#blockColor").removeClass("hidden");
+                });
+
+                $("#textInput").keyup(function(){       // .val()
+                    var someText = $(this).val();
+                    $("#textOutput").text(someText);
+                }).keyup();
+
+                $("#button_height").click(function(){   // .attr(name)
+                    $("#height_block").val($("#sublist4").attr("id"));
+                });
+
+                $("#choose_color").change(function(){   // .attr(name, value); .removeAttr
+                    var index = document.getElementById("choose_color").selectedIndex;
+                    if (index == 0) {
+                        $("#block_choose_color").removeAttr("class");
+                    }else{
+                        var chooses = document.getElementById("choose_color").getElementsByTagName("option");
+                        $("#block_choose_color").attr("class", $(chooses[document.getElementById("choose_color").selectedIndex]).attr("id"));
+                    }
+                });
+
+                $("#alternative").change(function(){    // .attr(attributes)
+                    $("#demo_image").attr({
+                        alt: $("#alternative").val(),
+                        title: $("#title_image").val()
+                    });
+                });
+                $("#title_image").change(function(){
+                    $("#demo_image").attr({
+                        alt: $("#alternative").val(),
+                        title: $("#title_image").val()
+                    });
+                });
+
+                $("#button_result").click(function(){   // .attr(name, function())
+                    $("#result").attr("value", function(){
+                        return parseInt($("#valueA").val()) + parseInt($("#valueB").val());
+                    });
+                });
+
+                $("#demo_image_insert").click(function(){ // .insertAfter()
+                    $("#inserted").remove();
+                    $("<p id=\"inserted\">Всталений текст </p>").insertAfter(this);
+                    setTimeout(function(){
+                        $("#inserted").remove();
+                    }, 5000);
+                });
+
+                var brotherNumber = 0;
+                $("#clone_p").click(function(){             // .clone()
+                    var randomColor =  '#' + (Math.random().toString(16) + '000000').substring(2,8);
+                    $(this).clone().text("Привіт, я брат " + ++brotherNumber).css("color", randomColor).appendTo("#sublist6");
+                });
+                $(".height").click(function(){
+                    $(this).height(function(){
+                        if ($(this).height() < 30) {
+                            $(this).css("background-color", "#60b524");
+                            return $(this).height(150) 
+                        }
+                        else if ($(this).height() < 60) {
+                            $(this).css("background-color", "#73000e");
+                        }else{
+                            $(this).css("background-color", "#efd932");
+                        }
+                        return ($(this).height() - 10)
+                    });
+                });
+
+                // $("#button_height_all").click(function(){   // .height()
+                //     $("#height_all").val($(document).height()+ 'px');
+                // });
+                $("#button_position").click(function(){
+                    $("#position_top").val($("#sublist8").position().top);
+                    $("#position_left").val($("#sublist8").position().left);
+                });
+            });
+        </script>
     </head>
     <body class="body">
-        
-        <a  href="index.html">Повернутись назад </a>
-        
+        <ul id="mainList">Демонстрація роботи методів:
+            <li id="list1">.html() </li>
+            <div class="sublists" id="sublist1">
+                <p>Ви можете редагувати список, а потім в один клік отриати html код</p>
+                <ul contenteditable="true" id="editList">Потрібний список
+                    <li>1. Пункт 1</li>
+                    <li>2. Пункт 2</li>
+                    <li>3. Пункт 3</li>
+                </ul>
+                <p>Натисніть на кнопку щоб отримати код html цього елемента</p>
+                <input type="button" value="Кнопка" id="button_html">
+                <p class="hidden" id="codeList"> </p>
+            </div>
+
+            <li id="list2">.css() </li>
+            <div class="sublists" id="sublist2">
+                <span>Введіть колір фону, рамки та тексту: </span><br>
+
+                Фон:  <input type="color" id="colorBack" value="#131313" class="inputColor">
+                Рамка:  <input type="color" id="colorBorder" value="#929292" class="inputColor">
+                Текст:  <input type="color" id="colorFont" value="#929292"  class="inputColor"><br>
+                <input type="button" value="Згенерувати" id="button_generate">
+                <div class="hidden" id="blockColor" contenteditable="true">
+                    Демонстраційний текст
+                </div>
+            </div>
+            
+            <li id="list3">.val() </li>
+            <div class="sublists" id="sublist3">
+                <input type="text" id="textInput" placeholder="Введіть якийсь текст"><br>
+                <div id="textOutput"> </div>
+            </div>
+            <li id="list4">.attr() </li>
+            <div class="sublists" id="sublist4">
+                <ul id="attrib">
+                    
+                    <li>.attr(name) </li>
+                    <div>
+    
+                        <input type="button" value="Натисніть, щоб дізнатись айді цього блоку" id="button_height">
+                        <input type="text" id="height_block" placeholder="Тут буде id" readonly>
+                        
+                    </div>
+                    <li>.attr(name, value), .removeAttr() </li>
+                    
+                    <div>
+                        <p>Оберіть колір фону для блоку: </p>
+                        <select id="choose_color">
+                            <option value="none">none</option>
+                            <option value="red" id="red_choose">red</option>
+                            <option value="green" id="green_choose">green</option>
+                            <option value="blue" id="blue_choose">blue</option>
+                        </select>
+                        <div id="block_choose_color">
+                            Демонстраційний текст
+                        </div>
+                    </div>
+                    <li>.attr(attributes) </li>
+                    <div id="another_block">
+                        <p>Задайте властивості alt та title для зображення:</p>
+                        <img src="demo-image.jpg" id="demo_image">
+                        alt:    <input type="text" id="alternative" class="at"><br>
+                        title: <input type="text" id="title_image" class="at"><br><br>  
+                    </div>
+                    <li>.attr(name, function) </li>
+                    <div>
+                       <p> Введіть 2 значення, щоб дізнатись їхню суму: </p>
+                        <input class="number" type="number" id="valueA" value="0"> + 
+                        <input class="number" type="number" id="valueB" value="0"> = 
+                        <input class="number" type="text" id="result" readonly> <br>
+                        <input type="button" value="Результат" value="" id="button_result">
+                    </div>
+                </ul>
+            </div>
+            
+            <li id="list5">.insertAfter() </li>
+            <div class="sublists" id="sublist5">
+                <p> Тиць на фото </p>
+                <img src="demo-image.jpg" id="demo_image_insert">
+            </div>
+            
+            <li id="list6">.clone() </li>
+            <div class="sublists" id="sublist6">
+                <p id="clone_p">Тиць на мене, щоб створити мені брата</p>
+            </div>
+            
+            <li id="list7">.height(function()) </li>
+            <div class="sublists" id="sublist7">
+                <p>Натисніть на блок, щоб змінити його висоту</p>
+                <div class="height"> </div>
+                <div class="height"> </div>
+                <div class="height"> </div>
+                <div class="height"> </div>
+                <div class="height"> </div>
+                
+
+<!--                <input type="button" value="Натисніть, щоб дізнатись висоту всієї сторінки в пікселях" id="button_height_all">
+                <input type="text" id="height_all" placeholder="Тут буде висота" readonly> -->
+            </div>
+            
+            <li id="list8">.position() </li>
+            <div class="sublists" id="sublist8">
+                <input type="button" value="Натисніть, щоб дізнатись положення цього блоку відносно документа" id="button_position"><br>
+                top:  <input type="text" class="position" id="position_top" placeholder="Тут буде значення" readonly><br>
+                left: <input type="text" class="position" id="position_left" placeholder="Тут буде значення" readonly>
+            </div>
+        </ul>
+
+        <a  href="../">Повернутись назад </a>
     </body>
 </html> 

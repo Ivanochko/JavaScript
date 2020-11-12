@@ -1,0 +1,213 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="utf-8">
+    <title>Лабораторна №7</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.subheaders').hide();
+            $('.sublists').hide();
+
+            $('.headers').click(function(){
+                $("#sub" + this.id).toggle();
+                $("#" + this.id).toggleClass("activeList");
+            });
+            
+            $("li").click(function () {
+                $("#sub" + this.id).toggle();
+                $("#" + this.id).toggleClass("activeList");
+            });
+
+            $(".li").click(function () {
+                $("#sub" + this.id).toggle();
+                $("#" + this.id).toggleClass("activeList");
+            });
+
+            $("#button_1").click(function () {
+                console.log("Остача від ділення цих чисел:", $("#number1_1").val() % $("#number1_2").val());
+            });
+            $("#button_2").click(function () {
+                console.log("Відповідь:", $("#number2_1").val() % $("#number2_2").val() == 0);
+            });
+            $("#button_3").click(function () {
+                var arr = [parseInt($("#number3_1").val()), $("#text3_1").val()];
+                console.log("Відповідь: %2$s %1$d", arr[0], arr[1]);
+            });
+            $("#button_4").click(function () {
+                console.info('Якась інформація про біду');
+                console.warn('Попередження про біду');
+                console.error('Бідаааа');
+                console.dir(document);
+                console.dirxml('Інформація про document:', document);
+                console.time('timer');
+                for (let i = 0; i < 10000; i++) { }
+                console.timeEnd('timer');
+                console.profile('test');
+                for (let i = 0; i < 10000; i++) { }
+                console.profileEnd('test');
+                console.assert(true, 'Це правда!');
+                console.assert(false, 'А це брехня!');
+            });
+            $("#button_5").click(function () {
+                $(".eq_5").eq($("#number5_1").val() - 1).toggleClass('style-red');
+            });
+            $("#button_6").click(function () {
+                $(".not_6").not('#special').toggleClass('style-red');
+            });
+            $("#button_7").click(function () {
+                $(".simple").add('#need_to_add').toggleClass('style-red');
+            });
+            $("#button_8").click(function () {
+                $(".has_8").has('span').toggleClass('style-red');
+            });
+            $("#button_9").click(function () {
+                var parentEls = $("b").parents().map(function () {
+                    return this.tagName;
+                }).get().join(", ");
+                $("b").append("<strong>" + parentEls + "</strong>");
+            });
+
+            $("#button_10_1").click(function () {
+                $("#sublist10").find('li').removeClass('third');
+                $("#sublist10").find('li').filter('#spec').append(' modify(spec) ').addClass('style-red1');
+            });
+            $("#button_10_2").click(function () {
+                $("#sublist10").find('li').removeClass('style-red1');
+                $("#sublist10").find('li').filter(':nth-child(3n)').append(' modify(3)').addClass('third');
+            });
+        });
+    </script>
+</head>
+
+<body class="body">
+    <h3>Лабораторна №7</h3>
+    <ul id="mainList">
+
+        <h4 class="headers" id="header1">Завдання 1</h4>
+
+        <div class="subheaders" id="subheader1">
+            <hr style="border-bottom: 2.5px dashed rgb(68, 82, 85);">
+
+            <li id="list1" class="lists">1. Вивід остачі від ділення одного числа на інше; </li>
+            <div class="sublists" id="sublist1">
+                <input type="number" id="number1_1"> %
+                <input type="number" id="number1_2">  
+                <input type="button" id="button_1" value="Клік, щоб показати в консолі">
+            </div>
+
+            <li id="list2" class="lists">2. Вивід логічного значення (true/false) перевірки рівності нулю остачі від
+                ділення
+                одного числа на інше;</li>
+            <div class="sublists" id="sublist2">
+                <input type="number" id="number2_1"> %
+                <input type="number" id="number2_2">  
+                <input type="button" id="button_2" value="Клік, щоб показати в консолі">
+            </div>
+
+            <li id="list3" class="lists">3. Комбіновай вивід тексту і значень деякого наперед заданого масиву,
+                використовуючи керуючі послідовності %2, %d, %s).</li>
+            <div class="sublists" id="sublist3">
+                Якесь  число: <input type="number" id="number3_1"><br>
+                Якийсь текст: <input type="text" id="text3_1"><br>
+                <input type="button" id="button_3" value="Клік, щоб показати в консолі">
+            </div>
+
+            <hr style="border-top: 2.5px dashed rgb(68, 82, 85);">
+        </div>
+        <h4 class="headers" id="header2">Завдання 2</h4>
+        <div class="subheaders" id="subheader2">
+            <hr style="border-bottom: 2.5px dashed rgb(68, 82, 85);">
+
+            <input type="button" id="button_4" value="Клік, щоб побачити все в консолі">
+
+            <hr style="border-top: 2.5px dashed rgb(68, 82, 85);">
+        </div>
+        <h4 class="headers" id="header3">Завдання 3</h4>
+        <div class="subheaders" id="subheader3">
+            <hr style="border-bottom: 2.5px dashed rgb(68, 82, 85);">
+
+            <li id="list5" class="lists">1.   .eq()</li>
+            <div class="sublists" id="sublist5">
+                <p>Введіть номер блоку (1-5)</p>
+                <input type="number" id="number5_1" max="5" min="1">
+                <input type="button" id="button_5" value="Клік, щоб запрацювало"><br>
+                <div class="eq_5"> </div>
+                <div class="eq_5"> </div>
+                <div class="eq_5"> </div>
+                <div class="eq_5"> </div>
+                <div class="eq_5"> </div>
+            </div>
+            <li id="list6" class="lists">2.   .not()</li>
+            <div class="sublists" id="sublist6">
+                <p>Коли ви натисните на кнопку, всі елементи крім обраних (3,5) змінять свій стиль</p>
+                <input type="button" id="button_6" value="Клік, щоб запрацювало"><br>
+                <div class="not_6"> </div>
+                <div class="not_6"> </div>
+                <div class="not_6" id="special"> </div>
+                <div class="not_6"> </div>
+                <div class="not_6" id="special"> </div>
+            </div>
+            <li id="list7" class="lists">3.  .add()</li>
+            <div class="sublists" id="sublist7">
+                <p>Коли ви натисните на кнопку, всі елементи з класом simple + (need_to_add) змінять стиль </p>
+                <input type="button" id="button_7" value="Клік, щоб запрацювало"><br>
+                <div class="add_7" id="need_to_add"> </div>
+                <div class="add_7"> </div>
+                <div class="add_7 simple"> </div>
+                <div class="add_7"> </div>
+                <div class="add_7 simple"> </div>
+            </div>
+            <li id="list8" class="lists">4.  .has()</li>
+            <div class="sublists" id="sublist8">
+                <p>Коли ви натисните на кнопку, всі елементи які мають дочірній елемент span змінять стиль</p>
+                <input type="button" id="button_8" value="Клік, щоб запрацювало"><br>
+                <div class="has_8"><span></span> </div>
+                <div class="has_8"> </div>
+                <div class="has_8"> </div>
+                <div class="has_8"><span></span> </div>
+                <div class="has_8"> </div>
+            </div>
+            <li id="list9" class="lists">5.  .parents()</li>
+            <div class="sublists" id="sublist9">
+                <p>Коли ви натисните на кнопку, щоб побачити батьківські елементи тегу b</p>
+                <input type="button" id="button_9" value="Клік, щоб запрацювало"><br>
+                <p>
+                    <span>
+                        <b>Мої батьківські елементи це: </b>
+                    </span>
+                </p>
+
+            </div>
+            <hr style="border-top: 2.5px dashed rgb(68, 82, 85);">
+        </div>
+        <h4 class="headers" id="header4">Завдання 4</h4>
+        <div class="subheaders" id="subheader4">
+            <hr style="border-bottom: 2.5px dashed rgb(68, 82, 85);">
+            <li id="list10" class="lists"> відкрити завдання</li>
+            <div class="sublists" id="sublist10">
+                <ul> Демонстраційний список
+                    <li class="list_10_ex">Демонстраційний елемент</li>
+                    <li class="list_10_ex" id="spec">Демонстраційний елемент з спеціальним стилем</li>
+                    <li class="list_10_ex">Демонстраційний елемент</li>
+                    <li class="list_10_ex">Демонстраційний елемент</li>
+                    <li class="list_10_ex" id="spec">Демонстраційний елемент з спеціальним стилем</li>
+                    <li class="list_10_ex">Демонстраційний елемент</li>
+                    <li class="list_10_ex" id="spec">Демонстраційний елемент з спеціальним стилем</li>
+                    <li class="list_10_ex">Демонстраційний елемент</li>
+                    <li class="list_10_ex">Демонстраційний елемент</li>
+                </ul>
+                <input type="button" id="button_10_1" value="Тиць, щоб включити стилі для спеціальних елементів">
+                <input type="button" id="button_10_2" value="Тиць, щоб включити стилі для кожного третього елемента">
+            </div>
+            <hr style="border-top: 2.5px dashed rgb(68, 82, 85);">
+        </div>
+    </ul>
+
+    <a href="../">Повернутись назад </a>
+</body>
+
+</html>
