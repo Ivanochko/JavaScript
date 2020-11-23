@@ -1,0 +1,310 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="utf-8">
+    <title>Лабораторна №8</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sublists').hide();
+            $.globalEval('var zminna = "Я змінна!"')
+            var arr1 = [1,2,3,4,5,6,7,8,9]
+            var arr2 = [2,5,8,9,10,19,27,69,102]
+            $("li").click(function () {
+                $("#sub" + this.id).toggle();
+                $("#" + this.id).toggleClass("activeList");
+            });
+
+            $('#button1').click(function () {
+                if ($.contains($('#sublist1')[0], $('span')[0])) {
+                    $('#sublist1').find('span').toggleClass('style-red');
+                }
+            });
+            $('#button2').click(function () {
+                $('#sublist2').data('answer', 2);
+                $('#sublist2').data('id', '#sublist2');
+                alert('answer = ' + $('#sublist2').data('answer') + '\nid = ' + $('#sublist2').data('id'))
+            });
+            $('#button3').click(function () {
+                $('.blocks2').each(function(index){
+                    if(index === 1){
+                        $(this).toggleClass('style-red')
+                    }
+                })
+            });
+            $('#button4').click(function () {
+                let country = {
+                    name: 'Ukraine',
+                    population: '41 млн 830,6 тис. осіб.'
+                }
+                let capital = {
+                    country: "Ukraine",
+                    capital: 'Kyiv'
+                }
+                let obj = $.extend(country, capital);
+                alert(JSON.stringify(obj))
+            });
+            $.fn.extend({
+                back: function(){
+                    $(this).toggleClass('style-red')
+                },
+                bord: function(){
+                    $(this).toggleClass('border-red')
+                },
+                shadow: function(){
+                    $(this).toggleClass('box-shadow-red')
+                },
+                okr: function(){
+                    $(this).toggleClass('okrugl')
+                }
+            });
+            $('#button-back').click(function(){
+                $('.experimental').back();
+            });
+            $('#button-bord').click(function(){
+                $('.experimental').bord();
+            });
+            $('#button-shadow').click(function(){
+                $('.experimental').shadow();
+            });
+            $('#button-okr').click(function(){
+                $('.experimental').okr();
+            });
+            $('#button6').click(function () {
+                alert(zminna)
+            });
+            $('#button7').click(function () {
+                alert($.grep(arr1, function(val, index){
+                    return val > 5
+                }));
+            });
+            $('#button8').click(function () {
+                var temp
+                if($.inArray(parseInt($('#number8').val()), arr1) === -1){
+                        temp = 'False'
+                    }
+                    else{
+                        temp = 'True'
+                    }
+                alert(temp);
+            });
+            $('#button9').click(function () {
+                alert($.isArray(arr1))
+            });
+            $('#button10').click(function () {
+                let obj = {}
+                alert(JSON.stringify(obj))
+                alert($.isEmptyObject(obj))
+                obj = {
+                    x: 18
+                }
+                alert(JSON.stringify(obj))
+                alert($.isEmptyObject(obj))
+            });
+            $('#button11').click(function () {
+                alert('String = ' + $.isNumeric('string'))
+                alert('18 = ' + $.isNumeric(18))
+            });
+            $('#button12').click(function () {
+                let obj = {}
+                alert(JSON.stringify(obj))
+                alert($.isPlainObject(obj))
+                obj = {
+                    x: 18
+                }
+                alert(JSON.stringify(obj))
+                alert($.isPlainObject(obj))
+            });
+            $('#button13').click(function () {
+                var all = document.querySelectorAll('.li13');
+                var array = $.makeArray(all);
+                array.reverse();
+                $('#answer13').append(array);
+
+            });
+            $('#button14').click(function () {
+                $('.d14').map(function(index, el){
+                    $(el).css('box-shadow', '0 0 15px rgb(128, 16, 16)' )
+                });
+            });
+            $('#button141').click(function () {
+                $('.d14').map(function(index, el){
+                    $(el).css('background-color', 'rgb(128, 16, 16)' )
+                });
+            });
+            $('#button15').click(function () {
+                alert($.merge(arr1, arr2))
+            });
+            $('#button16').click(function () {
+                alert($.noop(alert("Ой, це alert")));
+            });
+            $('#button17').click(function () {
+                alert($.now())
+            });
+            $('#button18').click(function () {
+                var a = $('#text18').val() + '<br>'
+                a = $.parseHTML(a)
+                $('#sublist18').append(a)
+
+            });
+            $('#button19').click(function () {
+                $('#sublist19').data('answer', 19);
+                $('#sublist19').data('id', '#sublist19');
+                alert('answer = ' + $('#sublist19').data('answer') + '\nid = ' + $('#sublist19').data('id'))
+                $('#sublist19').removeData('answer')
+                alert('id = ' + $('#sublist19').data('id'))
+
+            });
+            $('#button20').click(function () {
+                var str = '    Simple string      '
+                alert('start: "' + str + '" End')
+                str = $.trim(str)
+                alert('start: "' + str + '" End')
+            });
+            $('#button21').click(function () {
+                var values = [1, 'str', false, 5.5, {}]
+                for (let index = 0; index < values.length; index++) {
+                    let temp = $.type(values[index])
+                    alert(values[index] + ' ' + temp);
+                }
+            });
+            $('#button22').click(function(){
+                var arr1 = $('li').get();
+                alert('Довжина масиву до сортування: ' + arr1.length);
+                arr1 = $.uniqueSort(arr1);
+                alert('Довжина масиву після сортування: ' + arr1.length);
+                alert('Всі елементи <li> унікальні')
+            });
+        });
+    </script>
+</head>
+
+<body class="body">
+    <h3>Лабораторна №8</h3>
+    <ul id="mainList">
+
+        <li id="list1" class="lists">$.contains()</li>
+        <div class="sublists" id="sublist1">
+            <div class="blocks1" id="block1"></div>
+            <div class="blocks1" id="block2"><span>    </span></div>
+            <div class="blocks1" id="block3"></div>
+            <div class="blocks1" id="block4"></div><br>
+            <input type="button" id="button1" value="Клік, щоб показати блок який мітить span">
+        </div>
+        <li id="list2" class="lists">$.data()</li>
+        <div class="sublists" id="sublist2">
+            <input type="button" id="button2" value="Клік, щоб дізнатись дані батьківського блоку">
+        </div>
+        <li id="list3" class="lists">$.each()</li>
+        <div class="sublists" id="sublist3">
+            <div class="blocks2"></div>
+            <div class="blocks2"></div>
+            <div class="blocks2"></div> <br>
+            <input type="button" id="button3" value="Клік, щоб показати другий блок">
+        </div>
+        <li id="list4" class="lists">$.extend()</li>
+        <div class="sublists" id="sublist4">
+            <input type="button" id="button4" value="Клік, щоб побачити об'єднаний об'єкт">
+        </div>
+        <li id="list5" class="lists">$.fn.extend()</li>
+        <div class="sublists" id="sublist5">
+            <div class="experimental"></div><br>
+            <input type="button" value="Фон" id="button-back"><br>
+            <input type="button" value="Рамка" id="button-bord"><br>
+            <input type="button" value="Тінь" id="button-shadow"><br>
+            <input type="button" value="Округлення" id="button-okr">
+        </div>
+        <li id="list6" class="lists">$.globalEval()</li>
+        <div class="sublists" id="sublist6">
+            <input type="button" id="button6" value="Клік, щоб побачити глобальну змінну">
+        </div>
+        <li id="list7" class="lists">$.grep()</li>
+        <div class="sublists" id="sublist7">
+            <input type="button" id="button7" value="Клік, щоб побачити числа масиву arr1 які більші 5">
+        </div>
+        <li id="list8" class="lists">$.inArray()</li>
+        <div class="sublists" id="sublist8">
+            <input type="number" id="number8"><br>
+            <input type="button" id="button8" value="Клік, щоб побачити чи введене число є в масиві arr1">
+        </div>
+        <li id="list9" class="lists">$.isArray()</li>
+        <div class="sublists" id="sublist9">
+            <input type="button" id="button9" value="Клік, щоб побачити чи arr1 - масив">
+        </div>
+        <li id="list10" class="lists">$.isEmptyObject()</li>
+        <div class="sublists" id="sublist10">
+            <input type="button" id="button10" value="Клік">
+        </div>
+        <li id="list11" class="lists">$.isNumeric()</li>
+        <div class="sublists" id="sublist11">
+            <input type="button" id="button11" value="Клік">
+        </div>
+        <li id="list12" class="lists">$.isPlainObject()</li>
+        <div class="sublists" id="sublist12">
+            <input type="button" id="button12" value="Клік">
+        </div>
+        <li id="list13" class="lists">$.makeArray()</li>
+        <div class="sublists" id="sublist13">
+            <ul id="answer13">List
+                <li class="li13">Один</li>
+                <li class="li13">Два</li>
+                <li class="li13">Три</li>
+                <li class="li13">Чотири</li>
+            </ul>
+            <input type="button" id="button13" value="Клік, щоб реверсувати елементи списку">
+        </div>
+        <li id="list14" class="lists">$.map()</li>
+        <div class="sublists" id="sublist14">
+            <div class="d14">
+                <div class="d14">
+                    <div class="d14">
+                        <div class="d14">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="button" id="button14" value="Клік, щоб додати тінь">
+            <input type="button" id="button141" value="Клік, щоб додати фон">
+        </div>
+        <li id="list15" class="lists">$.merge()</li>
+        <div class="sublists" id="sublist15">
+            <input type="button" id="button15" value="Клік, щоб побачити об'єднаний масив">
+        </div>
+        <li id="list16" class="lists">$.noop()</li>
+        <div class="sublists" id="sublist16">
+            <input type="button" id="button16" value="Клік, щоб перевірити">
+        </div>
+        <li id="list17" class="lists">$.now()</li>
+        <div class="sublists" id="sublist17">
+            <input type="button" id="button17" value="Клік, щоб побачити час в мілісекундах від 1.1.1970">
+        </div>
+        <li id="list18" class="lists">$.parseHTML()</li>
+        <div class="sublists" id="sublist18">
+            <input type="text" id="text18">
+            <input type="button" id="button18" value="Клік, щоб побачити дію методу для цього тексту"><br>
+        </div>
+        <li id="list19" class="lists">$.removeData()</li>
+        <div class="sublists" id="sublist19">
+            <input type="button" id="button19" value="Клік, щоб побачити дію">
+        </div>
+        <li id="list20" class="lists">$.trim()</li>
+        <div class="sublists" id="sublist20">
+            <input type="button" id="button20" value="Клік, щоб побачити дію">
+        </div>
+        <li id="list21" class="lists">$.type()</li>
+        <div class="sublists" id="sublist21">
+            <input type="button" id="button21" value="Клік, щоб побачити метод в дії">
+        </div>
+        <li id="list22" class="lists">$.uniqueSort()</li>
+        <div class="sublists" id="sublist22">
+            <input type="button" id="button22" value="Клік, щоб перевірити дію методу">
+        </div>
+
+    </ul>
+
+    <a href="../">Повернутись назад </a>
+</body>
+
+</html>
