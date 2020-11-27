@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="utf-8">
+    <title>Лабораторна №9</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sublists').hide();
+
+            $("li").click(function () {
+                $("#sub" + this.id).toggle();
+                $("#" + this.id).toggleClass("activeList");
+            });
+            var runed = false;
+            var speed = 1000;
+            var goRun = true;
+            $('#button1').click(
+                function () {
+                    goRun = true;
+                    function animation() {
+                        $("#img1").animate({
+                            marginLeft: '-=300px',
+                            height: '-=100px',
+                            width: '-=50px'
+                        }, speed, 'swing', function () {
+                            $("#img1").animate({
+                                marginLeft: '+=600px',
+                                height: '+=50px',
+                                width: '-=90px'
+                            }, speed + speed / 2, 'swing', function () {
+                                $("#img1").animate(
+                                    {
+                                        marginLeft: '-=300px',
+                                        height: '+=50px',
+                                        width: '+=140px'
+                                    },
+                                    {
+                                        duration: speed + 100,
+                                        easing: 'swing',
+                                        done: function () {
+                                            if (goRun) {
+                                                animation();
+                                            } else {
+                                                $('#img1').stop();
+                                                $('#button1').text('Go animate!');
+                                                runed = false;
+                                            }
+                                        },
+                                        fail: console.error('Something goes wrong!')
+                                    });
+                            });
+                        });
+                    }
+                    if (!runed) {
+                        runed = true;
+                        $('#button1').text('Going animation...');
+                        animation();
+                    }
+                });
+            $('#faster1').click(function () {
+                speed -= 100;
+                if (speed <= 100) {
+                    $('#faster1').text('Slowly!');
+                }
+                if (speed < 100) {
+                    $('#faster1').text('Faster!');
+                    speed = 1000;
+                }
+                $('#speed').text(' ' + speed);
+            });
+            $('#stop').click(function () {
+                goRun = false;
+            });
+            $('#crit-stop').click(function(){
+                $('#img1').clearQueue().stop();
+                goRun = false;
+                runed = false;
+                $('#img1').css({
+                    width: '200px',
+                    height: '150px',
+                    marginLeft: 'none',
+                    margin: 'auto',
+                    marginTop: '15px',
+                    marginBottom: '15px'
+                });
+                speed = 1100;
+                $('#faster1').trigger('click');
+                $('#button1').text('Go animate!');
+            });
+            $('#div1').click(function () {
+                $('#div1').fadeOut(1000).delay(400).fadeIn(1000);
+            });
+            $('#div2').click(function () {
+                $('#div2').slideUp(1000).delay(400).slideDown(1000);
+            });
+            $('#div3').click(function () {
+                $('#div3').fadeTo(1000, 0, function(){
+                    $('#div3').fadeTo(500, 1);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body class="body">
+    <h3>Лабораторна №9</h3>
+    <ul id="mainList">
+
+        <li id="list1" class="lists">First</li>
+        <div class="sublists" id="sublist1">
+            <button id="button1">Go animate!</button>
+            <button id="faster1">Faster!</button>
+            Поточна швидкість: <span id="speed">1000</span>
+            <button id="stop">Stop!</button>
+            <button id="crit-stop">Critical Stop!</button><br>
+            <div id="img1"><img src="demo-image.jpg" class="demo-image"></div>
+            <!-- <img src="demo-image.jpg" id="img1" class="demo-image"> -->
+        </div>
+        <li id="list2" class="lists">Second</li>
+        <div class="sublists" id="sublist2">
+            <h4>Simple animation</h4>
+            <span>(click on image to animation)</span>
+            <div id="container">
+                <div class="divs" id="div1"><img src="demo-image.jpg" class="demo-image">
+                    <figcaption> fadeOut, fadeIn </figcaption> </div>
+                <div class="divs" id="div2"><img src="demo-image.jpg" class="demo-image">
+                    <figcaption> slideUp, slideDown </figcaption></div>
+                <div class="divs" id="div3"><img src="demo-image.jpg" class="demo-image">
+                    <figcaption> fadeTo </figcaption></div>
+            </div>
+        </div>
+    </ul>
+    <a href="../">Повернутись назад </a>
+
+</body>
+
+</html>
